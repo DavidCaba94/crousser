@@ -34,6 +34,9 @@ a:hover {
 	color: #ffffff;
     padding: 10px;
 	z-index: 9999;
+	-webkit-box-shadow: -1px 7px 13px -4px rgba(0,0,0,0.33);
+	-moz-box-shadow: -1px 7px 13px -4px rgba(0,0,0,0.33);
+	box-shadow: -1px 7px 13px -4px rgba(0,0,0,0.33);
 }
 
 .contenedor-landing .img-up {
@@ -335,6 +338,73 @@ a:hover {
 	margin-right: 10px;
 }
 
+.contenedor-landing .box-desplegables {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+.contenedor-landing .pregunta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+	width: 100%;
+	margin-top: 30px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+	-webkit-box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+	-moz-box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+	box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+	cursor: pointer;
+}
+
+.contenedor-landing .texto-pregunta {
+	color: #34495E;
+	text-align: left;
+	font-size: 15px;
+	font-weight: 400;
+	padding: 15px;
+	margin-bottom: 0;
+}
+
+.contenedor-landing .texto-respuesta {
+	color: #34495E;
+	text-align: left;
+	font-size: 12px;
+	font-weight: 400;
+	padding: 15px;
+	margin-bottom: 0;
+}
+
+.contenedor-landing .flecha-desplegable {
+	width: 30px;
+}
+
+.contenedor-landing .desplegable-respuesta {
+	display: none;
+	width: 100%;
+	margin-top: 5px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+	-webkit-box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+	-moz-box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+	box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+}
+
+.contenedor-landing .footer {
+	width: 100%;
+	height: 120px;
+	margin-top: 50px;
+	background-color: #41B883;
+	color: #ffffff;
+	padding: 10px;
+}
+
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
 	.contenedor-landing .subtitulo-cabecera {
@@ -343,6 +413,14 @@ a:hover {
 
 	.contenedor-landing .titulo-tab {
 		font-size: 30px;
+	}
+
+	.contenedor-landing .texto-pregunta {
+		font-size: 20px;
+	}
+
+	.contenedor-landing .texto-respuesta {
+		font-size: 15px;
 	}
 }
 
