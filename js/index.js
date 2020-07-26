@@ -23,6 +23,14 @@ $(document).ready(function(){
         }
         $(this).next().slideToggle();
     });
+
+    $('.hamburger-menu').on('click', function() {
+	    $('.bar').toggleClass('animate');
+	});
+
+	$('#btn-menu').on('click', function() {
+	    $('#menu-movil-desplegable').slideToggle();
+	});
 });
 
 function rotarFlecha(flecha, direccion){
