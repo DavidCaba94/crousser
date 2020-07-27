@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Índice de cursos - Crousser</title>
+        <title>Login - Crousser</title>
         <link rel="icon" type="image/png" href="img/logo.ico">
         <meta charset="UTF-8">
-        <meta name="title" content="Índice de cursos - Crousser">
+        <meta name="title" content="Login - Crousser">
         <meta name="description" content="Monta tus propios negocios de ecommerce con proveedores locales de tu país, de confianza. Tanto si eres mayorista, como si eres
         webmaster, como si fabricas algo que quieres vender, pon tu anuncio de forma gratuita y contacta con los mejores profesionales de cualquier sector.">
 
@@ -17,8 +17,8 @@
         <script src="app/libs/bootstrap-4.0.0/js/bootstrap.js"></script>
         <meta name="viewport" content= "width=device-width, user-scalable=no">
 
-        <link href="css/index.css" rel="stylesheet" type="text/css"/>
-        <script src="js/index.js"></script>
+        <link href="css/login.css" rel="stylesheet" type="text/css"/>
+        <script src="js/login.js"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163464348-2"></script>
@@ -32,8 +32,27 @@
 
     </head>
     <body>
-        <div class="contenedor-guia">
-            INDICE DE CURSOS
+        <div class="contenedor-login">
+            <div class="box-login">
+                <a href="/"><img class="logo-login" src="img/logo.png" /></a>
+                <p class="titulo-login">Accede a Crousser</p>
+                <div>
+                    <input id="email" type="email" placeholder="Email"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <input id="password" type="password" placeholder="Contraseña"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <label class="pure-material-checkbox">
+                        <input id="recordar" type="checkbox">
+                        <span>Recordar inicio de sesión</span>
+                    </label>
+                </div>
+                <div id="btn-entrar" class="btn-entrar">Entrar</div>
+                <p class="texto-registro">¿No tienes cuenta? Regístrate gratis <a href="/app/registro"><strong>aquí</strong></a></p>
+            </div>
         </div>
     </body>
 </html>

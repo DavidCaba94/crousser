@@ -1,0 +1,312 @@
+* {
+	padding:0;
+	margin:0;
+}
+
+body {
+  background-color: #f7f7f7;
+  font-family: "Open Sans", Sans-serif;
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+a:hover {
+    color: unset;
+    text-decoration: none;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+input:focus {
+    outline:none;
+}
+
+.contenedor-login {
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: nowrap;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.contenedor-login .box-login {
+    width: 500px;
+    height: auto;
+    margin-top: 100px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    -webkit-box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+	-moz-box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+	box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+}
+
+.contenedor-login .logo-login {
+    width: 100px;
+    margin-top: -50px;
+    cursor: pointer;
+}
+
+.contenedor-login .titulo-login {
+    font-size: 24px;
+    font-weight: 700;
+    color: #34495E;
+}
+
+.contenedor-login .texto-registro {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #34495E;
+}
+
+.contenedor-login .btn-entrar {
+    width: 120px;
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: #41B883;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.contenedor-login .btn-entrar:hover {
+    background-color: #329066;
+}
+
+/*ANIMACION INPUTS LOGIN*/
+
+input {
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:270px;
+    border:none;
+    border-bottom:1px solid #34495E;
+    color:#34495E
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    width: 285px;
+}
+.bar:before, .bar:after 	{
+    content:'';
+    height:2px;
+    width:0;
+    bottom:1px;
+    position:absolute;
+    background:#41B883;
+    transition:0.2s ease all;
+    -moz-transition:0.2s ease all;
+    -webkit-transition:0.2s ease all;
+}
+.bar:before {
+    left:50%;
+}
+.bar:after {
+    right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width:50%;
+}
+
+::placeholder {
+  color: #34495E;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: #34495E;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: #34495E;
+}
+
+/*FIN ANIMACION INPUTS LOGIN*/
+
+/*CHECK RECORDAR*/
+
+.pure-material-checkbox {
+    z-index: 0;
+    position: relative;
+    margin-top: 30px;
+    display: inline-block;
+    color: #000000ab;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Input */
+.pure-material-checkbox > input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    z-index: -1;
+    position: absolute;
+    left: -10px;
+    top: -8px;
+    display: block;
+    margin: 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
+    box-shadow: none;
+    outline: none;
+    opacity: 0;
+    transform: scale(1);
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+/* Span */
+.pure-material-checkbox > span {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    color: #34495E;
+}
+
+/* Box */
+.pure-material-checkbox > span::before {
+    content: "";
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 3px 11px 3px 1px;
+    border: solid 2px; /* Safari */
+    border-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
+    border-radius: 2px;
+    width: 18px;
+    height: 18px;
+    vertical-align: top;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+/* Checkmark */
+.pure-material-checkbox > span::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 1px;
+    width: 10px;
+    height: 5px;
+    border: solid 2px transparent;
+    border-right: none;
+    border-top: none;
+    transform: translate(3px, 4px) rotate(-45deg);
+}
+
+/* Checked, Indeterminate */
+.pure-material-checkbox > input:checked,
+.pure-material-checkbox > input:indeterminate {
+    background-color: #41B883;
+}
+
+.pure-material-checkbox > input:checked + span::before,
+.pure-material-checkbox > input:indeterminate + span::before {
+    border-color: #41B883;
+    background-color: #41B883;
+}
+
+.pure-material-checkbox > input:checked + span::after,
+.pure-material-checkbox > input:indeterminate + span::after {
+    border-color: #ffffff;
+}
+
+.pure-material-checkbox > input:indeterminate + span::after {
+    border-left: none;
+    transform: translate(4px, 3px);
+}
+
+/* Hover, Focus */
+.pure-material-checkbox:hover > input {
+    opacity: 0.04;
+}
+
+.pure-material-checkbox > input:focus {
+    opacity: 0.12;
+}
+
+.pure-material-checkbox:hover > input:focus {
+    opacity: 0.16;
+}
+
+/* Active */
+.pure-material-checkbox > input:active {
+    opacity: 1;
+    transform: scale(0);
+    transition: transform 0s, opacity 0s;
+}
+
+.pure-material-checkbox > input:active + span::before {
+    border-color: #41B883;
+}
+
+.pure-material-checkbox > input:checked:active + span::before {
+    border-color: transparent;
+    background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
+}
+
+/* Disabled */
+.pure-material-checkbox > input:disabled {
+    opacity: 0;
+}
+
+.pure-material-checkbox > input:disabled + span {
+    color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
+    cursor: initial;
+}
+
+.pure-material-checkbox > input:disabled + span::before {
+    border-color: currentColor;
+}
+
+.pure-material-checkbox > input:checked:disabled + span::before,
+.pure-material-checkbox > input:indeterminate:disabled + span::before {
+    border-color: transparent;
+    background-color: currentColor;
+}
+
+/*FIN CHECK RECORDAR*/
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    .contenedor-login .box-login {
+        margin-top: 200px;
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+}
