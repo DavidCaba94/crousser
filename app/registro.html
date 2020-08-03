@@ -32,8 +32,73 @@
 
     </head>
     <body>
-        <div class="contenedor-registro">
-            REGISTRO
+        <div class="contenedor-login">
+            <div class="box-login">
+                <a href="/"><img class="logo-login" src="img/logo.png" /></a>
+                <p class="titulo-login">Regístrate en Crousser</p>
+                <div>
+                    <input id="email" type="email" placeholder="Email *"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <input id="nombre" type="text" placeholder="Nombre *"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <input id="apellidos" type="text" placeholder="Apellidos *"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <input id="password" type="password" placeholder="Contraseña *"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <input id="password2" type="password" placeholder="Repetir contraseña *"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <input id="fecha_nac" type="date" placeholder="Fecha de nacimiento *"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <p class="texto-rol">País: <sup>*</sup></p>
+                    <select class="selector" name="pais" id="pais">
+                        <option value="nulo">Seleccione una opción</option>
+                        <option value="España">España</option>
+                        <option value="Francia">Francia</option>
+                        <option value="Alemania">Alemania</option>
+                        <option value="Italia">Italia</option>
+                    </select>
+                </div>
+                <div>
+                    <p class="texto-rol">Ciudad: <sup>*</sup></p>
+                    <select class="selector" name="ciudad" id="ciudad">
+                        <option value="nulo">Seleccione una opción</option>
+                        <option value="España">Madrid</option>
+                        <option value="Francia">Barcelona</option>
+                        <option value="Alemania">Salamanca</option>
+                        <option value="Italia">Zamora</option>
+                    </select>
+                </div>
+                <div>
+                    <input id="email_contacto" type="email" placeholder="Email de contacto *"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <p class="texto-rol">Selecciona tu rol: <sup>*</sup></p>
+                    <div class="box-radio">
+                        <p>
+                            <input type="radio" id="webmaster" name="radio-group" checked>
+                            <label for="webmaster">Webmaster</label>
+                        </p>
+                        <p>
+                            <input type="radio" id="negocio" name="radio-group">
+                            <label for="negocio">Negocio</label>
+                        </p>
+                    </div>
+                </div>
+                <div id="btn-registro" class="btn-registro">Registrarse</div>
+            </div>
         </div>
     </body>
 </html>
