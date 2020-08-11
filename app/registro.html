@@ -18,7 +18,7 @@
         <meta name="viewport" content= "width=device-width, user-scalable=no">
 
         <link href="css/login.css" rel="stylesheet" type="text/css"/>
-        <script src="js/login.js"></script>
+        <script src="js/registro.js"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163464348-2"></script>
@@ -63,21 +63,14 @@
                 <div>
                     <p class="texto-rol">País: <sup>*</sup></p>
                     <select class="selector" name="pais" id="pais">
-                        <option value="nulo">Seleccione una opción</option>
-                        <option value="España">España</option>
-                        <option value="Francia">Francia</option>
-                        <option value="Alemania">Alemania</option>
-                        <option value="Italia">Italia</option>
+                        <!-- Carga de paises por js -->
                     </select>
                 </div>
                 <div>
                     <p class="texto-rol">Ciudad: <sup>*</sup></p>
-                    <select class="selector" name="ciudad" id="ciudad">
-                        <option value="nulo">Seleccione una opción</option>
-                        <option value="España">Madrid</option>
-                        <option value="Francia">Barcelona</option>
-                        <option value="Alemania">Salamanca</option>
-                        <option value="Italia">Zamora</option>
+                    <select class="selector" name="ciudad" id="ciudad" disabled>
+                        <option value="nulo">Seleccione antes un país</option>
+                        <!-- Carga de ciudades por js -->
                     </select>
                 </div>
                 <div>
