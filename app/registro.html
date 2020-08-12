@@ -81,16 +81,52 @@
                     <p class="texto-rol">Selecciona tu rol: <sup>*</sup></p>
                     <div class="box-radio">
                         <p>
-                            <input type="radio" id="webmaster" name="radio-group" checked>
+                            <input type="radio" id="webmaster" name="rol" value="webmaster" checked>
                             <label for="webmaster">Webmaster</label>
                         </p>
                         <p>
-                            <input type="radio" id="negocio" name="radio-group">
+                            <input type="radio" id="negocio" name="rol" value="negocio">
                             <label for="negocio">Negocio</label>
                         </p>
                     </div>
                 </div>
-                <div id="btn-registro" class="btn-registro">Registrarse</div>
+                <div id="btn-siguiente" class="btn-registro">Siguiente</div>
+                <p id="texto-error" class="texto-error">Todos los campos son obligatorios</p>
+            </div>
+
+            <!-- SEGUNDO FORMULARIO DE REGISTRO -->
+            <div class="box-registro2">
+                <a href="/"><img class="logo-login" src="img/logo.png" /></a>
+                <div class="box-volver">
+                    <img class="flecha-volver" src="img/volver.png" />
+                </div>
+                <p class="texto-registro">Estos datos no son obligatorios</p>
+                <div>
+                    <input id="foto" type="text" placeholder="Foto"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <input id="website" type="text" placeholder="Website"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <input id="instagram" type="text" placeholder="Instagram"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <input id="linkedin" type="text" placeholder="LinkedIn"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <input id="telefono" type="text" placeholder="Teléfono"/>
+                    <span class="bar"></span>
+                </div>
+                <div>
+                    <input id="descripcion" type="text" placeholder="Descripción"/>
+                    <span class="bar"></span>
+                </div>
+
+                <div id="btn-registrar" class="btn-registro">Registrar</div>
             </div>
         </div>
     </body>

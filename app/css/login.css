@@ -50,16 +50,30 @@ input:focus {
 }
 
 .contenedor-login .box-registro {
-    width: 500px;
-    height: auto;
-    margin-top: 100px;
-		margin-bottom: 100px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    text-align: center;
-	  -webkit-box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
-		-moz-box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
-		box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+	width: 500px;
+	height: auto;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	text-align: center;
+	-webkit-box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+	-moz-box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+	box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+}
+
+.contenedor-login .box-registro2 {
+	display: none;
+	width: 500px;
+	height: auto;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	text-align: center;
+	-webkit-box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+	-moz-box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
+	box-shadow: -1px 7px 8px -4px rgba(0,0,0,0.20);
 }
 
 .contenedor-login .logo-login {
@@ -122,6 +136,21 @@ input:focus {
 
 .contenedor-login .btn-registro:hover {
     background-color: #329066;
+}
+
+.contenedor-login .texto-error {
+	display: none;
+	color: #ff5a5a;
+    font-size: 17px;
+}
+
+.contenedor-login .box-volver {
+	width: 130px;
+	cursor: pointer;
+}
+
+.contenedor-login .flecha-volver {
+	width: 50px;
 }
 
 /*ANIMACION INPUTS LOGIN*/
@@ -392,11 +421,11 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
 
 /*CUSTOM SELECT*/
 .selector {
-		width: 280px;
+	width: 280px;
     height: 40px;
     border: 1px solid #34495E;
     border-radius: 5px;
-		color: #34495E;
+	color: #34495E;
 }
 /*FIN CUSTOM SELECT*/
 
@@ -411,8 +440,12 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
         margin-top: 200px;
     }
 
-		.contenedor-login .box-registro {
-        margin-top: 100px;
+	.contenedor-login .box-registro {
+    	margin-top: 100px;
+    }
+
+	.contenedor-login .box-registro2 {
+    	margin-top: 100px;
     }
 }
 
