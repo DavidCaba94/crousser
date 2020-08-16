@@ -102,19 +102,21 @@
                 </div>
                 <p class="texto-registro">Estos datos no son obligatorios</p>
                 <div>
-                    <input id="foto" type="text" placeholder="Foto"/>
+                    <div class="custom-file input-foto">
+                        <input type="file" class="custom-file-input" id="foto" accept=".png,.jpg,.jpeg,.gif,.webp,.bmp">
+                        <label id="label-foto" class="custom-file-label" for="customFile">Foto</label>
+                    </div>
+                </div>
+                <div>
+                    <input id="website" type="text" placeholder="Website link"/>
                     <span class="bar"></span>
                 </div>
                 <div>
-                    <input id="website" type="text" placeholder="Website"/>
+                    <input id="instagram" type="text" placeholder="Instagram link"/>
                     <span class="bar"></span>
                 </div>
                 <div>
-                    <input id="instagram" type="text" placeholder="Instagram"/>
-                    <span class="bar"></span>
-                </div>
-                <div>
-                    <input id="linkedin" type="text" placeholder="LinkedIn"/>
+                    <input id="linkedin" type="text" placeholder="LinkedIn link"/>
                     <span class="bar"></span>
                 </div>
                 <div>

@@ -153,6 +153,26 @@ input:focus {
 	width: 50px;
 }
 
+.contenedor-login #foto {
+	font-size: 12px;
+}
+
+.contenedor-login .input-foto {
+	width: 285px;
+}
+
+.contenedor-login .custom-file-label {
+    color: #34495E;
+	text-align: left;
+}
+
+.contenedor-login .custom-file-label::after {
+    color: #ffffff;
+    content: "Seleccionar";
+    background-color: #41B883;
+    border-left: 1px solid #ced4da;
+}
+
 /*ANIMACION INPUTS LOGIN*/
 
 input {

@@ -25,6 +25,10 @@ $(document).ready(function(){
 		$(".box-registro").css("display", "block");
 	});
 
+	$("#foto").change(function(){
+		$("#label-foto").text($("#foto").val());
+	});
+
 	$("#btn-registrar").on('click', function() {
 		guardarRegistro();
 	});
@@ -137,7 +141,6 @@ function avanzarPaso() {
 	} else {
 		$(".texto-error").css("display", "none");
 		if(passwordIguales()){
-			//avanzo paso
 			$(".box-registro").css("display", "none");
 			$(".box-registro2").css("display", "block");
 		}
@@ -173,5 +176,34 @@ function passwordIguales() {
 }
 
 function guardarRegistro() {
-	alert("En mantenimiento");
+	foto = $("#foto").val();
+	website = $("#website").val();
+	instagram = $("#instagram").val();
+	linkedin = $("#linkedin").val();
+	telefono = $("#telefono").val();
+	descripcion = $("#descripcion").val();
+
+	console.log("Datos registro:");
+	console.log("Email: "+email);
+	console.log("Nombre: "+nombre);
+	console.log("Apellidos: "+apellidos);
+	console.log("Password: "+password);
+	console.log("Fecha Nac: "+fecha_nac);
+	console.log("Pais: "+pais);
+	console.log("Ciudad: "+ciudad);
+	console.log("Email Contacto: "+email_contacto);
+	console.log("Rol: "+rol);
+	console.log("Foto: "+foto);
+	console.log("Website: "+website);
+	console.log("Instagram: "+instagram);
+	console.log("LinkedIn: "+linkedin);
+	console.log("Telefono: "+telefono);
+	console.log("Descripcion: "+descripcion);
+	var date = new Date();
+	var dia = date.getDate();
+	var mes = date.getMonth()+1;
+	var ano = date.getFullYear();
+	console.log("Fecha Registro: "+ano+"-"+mes+"-"+dia);
+
+	alert("Registro");
 }
