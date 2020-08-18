@@ -5,9 +5,8 @@ class Users
     function __construct()
     {
     }
-    public static function getAll($email,$pass)
-    {
-        $consulta = "SELECT id, email, nombre, apellidos, password FROM blog_usuarios WHERE email = '$email' AND password = '$pass'";
+    public static function getAll($email,$pass){
+        $consulta = "SELECT * FROM usuarios WHERE email = '$email' AND password = '$pass'";
         try {
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             $comando->execute();
@@ -17,14 +16,8 @@ class Users
         }
     }
 
-    public static function getComments($id_post)
-    {
-        $consulta = "SELECT u.nombre, u.apellidos, c.comentario
-                    FROM blog_comentarios c
-                    INNER JOIN blog_usuarios u
-                    ON u.id = c.id_usuario
-                    WHERE c.id_post = '$id_post'
-                    ORDER BY c.id ASC";
+    public static function getUser($email){
+        $consulta = "SELECT * FROM usuarios WHERE email = '$email'";
         try {
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             $comando->execute();
@@ -34,9 +27,8 @@ class Users
         }
     }
 
-    public static function getEmail($email)
-    {
-        $consulta = "SELECT email FROM blog_usuarios WHERE email = '$email'";
+    public static function getEmail($email){
+        $consulta = "SELECT email FROM usuarios WHERE email = '$email'";
         try {
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             $comando->execute();
@@ -46,20 +38,7 @@ class Users
         }
     }
 
-    public static function getAllSolicitudes()
-    {
-        $consulta = "SELECT * FROM solicitudes_premium";
-        try {
-            $comando = Database::getInstance()->getDb()->prepare($consulta);
-            $comando->execute();
-            return $comando->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            return false;
-        }
-    }
-
-    public static function getUserLogin($email,$pass)
-    {
+    public static function getUserLogin($email,$pass){
         $consulta = "SELECT id_customer, firstname, lastname, email, passwd FROM psac_customer";
         try {
             $comando = Database::getInstance()->getDb()->prepare($consulta);
@@ -71,15 +50,7 @@ class Users
         }
     }
 
-    public static function update(
-        $username,
-        $password,
-        $name,
-        $surname,
-		    $email,
-        $foto
-    )
-    {
+    public static function update($username, $password, $name, $surname, $email, $foto){
         $consulta = "UPDATE user" .
             " SET password=?, name=?, surname=?, email=?, foto=? " .
             "WHERE username=?";
@@ -88,51 +59,34 @@ class Users
         return $cmd;
     }
 
-    public static function insert($email, $nombre, $apellidos, $password) {
-        $comando = "INSERT INTO blog_usuarios ( " .
-            "email," .
+    public static function insert($email,$nombre,$apellidos,$password,$fecha_nac,$fecha_reg,$pais,$ciudad,$email_contacto,$rol,$foto,$website,$instagram,$linkedin,$telefono,$descripcion) {
+        $comando = "INSERT INTO usuarios ( " .
+                "email," .
       			"nombre," .
       			"apellidos," .
-      			"password)" .
-            " VALUES( ?,?,?,?)";
+      			"password," .
+      			"fecha_nac," .
+      			"fecha_reg," .
+      			"pais," .
+      			"ciudad," .
+      			"email_contacto," .
+      			"rol," .
+      			"foto," .
+      			"website," .
+      			"instagram," .
+      			"linkedin," .
+      			"telefono," .
+      			"descripcion," .
+                "vip)" .
+            " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)";
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
         return $sentencia->execute(
-            array($email, $nombre, $apellidos, $password)
+            array($email,$nombre,$apellidos,$password,$fecha_nac,$fecha_reg,$pais,$ciudad,$email_contacto,$rol,$foto,$website,$instagram,$linkedin,$telefono,$descripcion)
         );
     }
 
-    public static function insertComment($id_post, $id_usuario, $comentario) {
-        $comando = "INSERT INTO blog_comentarios ( " .
-      			"id_post," .
-      			"id_usuario," .
-      			"comentario)" .
-            " VALUES( ?,?,?)";
-        $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(
-            array($id_post, $id_usuario, $comentario)
-        );
-    }
 
-    public static function insertSolicitudPremium(
-        $username,
-    		$email
-    )
-    {
-        $comando = "INSERT INTO solicitudes_premium ( " .
-            "username," .
-            "email)" .
-            " VALUES( ?,?)";
-        $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(
-            array(
-              $username,
-              $email,
-            )
-        );
-    }
-
-    public static function delete($id)
-    {
+    public static function delete($id){
         $comando = "DELETE FROM user WHERE id=?";
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
         return $sentencia->execute(array($id));

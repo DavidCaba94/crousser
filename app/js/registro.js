@@ -175,8 +175,9 @@ function passwordIguales() {
 	return iguales;
 }
 
-function guardarRegistro() {
-	foto = $("#foto").val();
+async function guardarRegistro() {
+	const file = document.querySelector('#foto').files[0];
+	foto = await toBase64(file);
 	website = $("#website").val();
 	instagram = $("#instagram").val();
 	linkedin = $("#linkedin").val();
@@ -199,11 +200,60 @@ function guardarRegistro() {
 	console.log("LinkedIn: "+linkedin);
 	console.log("Telefono: "+telefono);
 	console.log("Descripcion: "+descripcion);
-	var date = new Date();
-	var dia = date.getDate();
-	var mes = date.getMonth()+1;
-	var ano = date.getFullYear();
+	var fecha_reg = new Date();
+	var dia = fecha_reg.getDate();
+	var mes = fecha_reg.getMonth()+1;
+	var ano = fecha_reg.getFullYear();
 	console.log("Fecha Registro: "+ano+"-"+mes+"-"+dia);
 
-	alert("Registro");
+	$.ajax({
+          url: '../app/rest/comprobar_email.php',
+          dataType: 'json',
+          data: ({email: email}),
+          success: function(data) {
+              if(data.mensaje != "No encontrado"){
+                  alert("Ya hay un usuario registrado con ese email");
+              } else {
+                  $.ajax({
+                        type: 'POST',
+                        url: '../app/rest/insertar_usuario.php',
+                        dataType: 'json',
+                        data: ({
+							email: email,
+							nombre: nombre,
+							apellidos: apellidos,
+							password: password,
+							fecha_nac: fecha_nac,
+							fecha_reg: fecha_reg,
+							pais: parseInt(pais, 10),
+							ciudad: parseInt(ciudad, 10),
+							email_contacto: email_contacto,
+							rol: rol,
+							foto: foto,
+							website: website,
+							instagram: instagram,
+							linkedin: linkedin,
+							telefono: telefono,
+							descripcion: descripcion
+						}),
+                        success: function(data) {
+							alert("Usuario registrado");
+                        },
+                        error: function(error) {
+							console.log(error);
+                        }
+                  });
+              }
+          },
+          error: function(error) {
+              console.log(error);
+          }
+    });
 }
+
+const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+});
