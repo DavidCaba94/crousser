@@ -176,30 +176,20 @@ function passwordIguales() {
 }
 
 async function guardarRegistro() {
+
+	$("#btn-registrar").css("display", "none");
+	$("#loading-reg").css("display", "block");
+
 	const file = document.querySelector('#foto').files[0];
-	foto = await toBase64(file);
+	if(file != null) {
+		foto = await toBase64(file);
+	}
 	website = $("#website").val();
 	instagram = $("#instagram").val();
 	linkedin = $("#linkedin").val();
 	telefono = $("#telefono").val();
 	descripcion = $("#descripcion").val();
 
-	console.log("Datos registro:");
-	console.log("Email: "+email);
-	console.log("Nombre: "+nombre);
-	console.log("Apellidos: "+apellidos);
-	console.log("Password: "+password);
-	console.log("Fecha Nac: "+fecha_nac);
-	console.log("Pais: "+pais);
-	console.log("Ciudad: "+ciudad);
-	console.log("Email Contacto: "+email_contacto);
-	console.log("Rol: "+rol);
-	console.log("Foto: "+foto);
-	console.log("Website: "+website);
-	console.log("Instagram: "+instagram);
-	console.log("LinkedIn: "+linkedin);
-	console.log("Telefono: "+telefono);
-	console.log("Descripcion: "+descripcion);
 	var fecha_reg = new Date();
 	var dia = fecha_reg.getDate();
 	var mes = fecha_reg.getMonth()+1;
@@ -237,16 +227,16 @@ async function guardarRegistro() {
 							descripcion: descripcion
 						}),
                         success: function(data) {
-							alert("Usuario registrado");
+							window.location.href = 'https://crousser.com/app/registro-confirm';
                         },
                         error: function(error) {
-							console.log(error);
+							window.location.href = 'https://crousser.com/app/registro-error';
                         }
                   });
               }
           },
           error: function(error) {
-              console.log(error);
+              window.location.href = 'https://crousser.com/app/registro-error';
           }
     });
 }
