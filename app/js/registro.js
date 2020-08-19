@@ -202,7 +202,9 @@ async function guardarRegistro() {
           data: ({email: email}),
           success: function(data) {
               if(data.mensaje != "No encontrado"){
-                  alert("Ya hay un usuario registrado con ese email");
+				alert("Ya hay un usuario registrado con ese email");
+				$("#loading-reg").css("display", "none");
+				$("#btn-registrar").css("display", "block");
               } else {
                   $.ajax({
                         type: 'POST',
