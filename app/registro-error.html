@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Login - Crousser</title>
+        <title>Error al Registrarse - Crousser</title>
         <link rel="icon" type="image/png" href="img/logo.ico">
         <meta charset="UTF-8">
-        <meta name="title" content="Login - Crousser">
+        <meta name="title" content="Error al Registrarse - Crousser">
         <meta name="description" content="Monta tus propios negocios de ecommerce con proveedores locales de tu país, de confianza. Tanto si eres mayorista, como si eres
         webmaster, como si fabricas algo que quieres vender, pon tu anuncio de forma gratuita y contacta con los mejores profesionales de cualquier sector.">
 
@@ -17,8 +17,7 @@
         <script src="libs/bootstrap-4.0.0/js/bootstrap.js"></script>
         <meta name="viewport" content= "width=device-width, user-scalable=no">
 
-        <link href="css/login.css" rel="stylesheet" type="text/css"/>
-        <script src="js/login.js"></script>
+        <link href="css/resultado-registro.css" rel="stylesheet" type="text/css"/>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163464348-2"></script>
@@ -32,6 +31,10 @@
 
     </head>
     <body>
-        Algo ha salido mal durante el registro
+        <div class="contenedor-resultado">
+            <img class="img-resultado" src="img/error.png" />
+            <p class="texto-resultado">Algo ha fallado durante el registro, por favor, prueba de nuevo.</p>
+            <a href="/app/registro"><div class="btn-confirmar">Reintentar</div></a>
+        </div>
     </body>
 </html>

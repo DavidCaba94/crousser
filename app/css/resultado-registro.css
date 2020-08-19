@@ -1,0 +1,88 @@
+* {
+	padding:0;
+	margin:0;
+}
+
+body {
+  background-color: #f7f7f7;
+  font-family: "Open Sans", Sans-serif;
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+a:hover {
+    color: unset;
+    text-decoration: none;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+input:focus {
+    outline:none;
+}
+
+.contenedor-resultado {
+    display: block;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+}
+
+.contenedor-resultado .btn-confirmar {
+    width: 120px;
+    margin: 0 auto;
+    margin-top: 30px;
+	margin-bottom: 30px;
+    background-color: #41B883;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.contenedor-resultado .btn-confirmar:hover {
+    background-color: #329066;
+}
+
+.contenedor-resultado .img-resultado {
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+.contenedor-resultado .texto-resultado {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    color: #34495E;
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+}
