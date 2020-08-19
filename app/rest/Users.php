@@ -39,7 +39,7 @@ class Users
     }
 
     public static function getUserLogin($email,$pass){
-        $consulta = "SELECT id_customer, firstname, lastname, email, passwd FROM psac_customer";
+        $consulta = "SELECT id, nombre, apellidos, email, password FROM usuarios";
         try {
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             $comando->execute(array($username));
