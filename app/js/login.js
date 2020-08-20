@@ -1,6 +1,18 @@
 var email, password;
 
 $(document).ready(function(){
+	var usuario = localStorage.getItem('userObject');
+	var checkRecordar = localStorage.getItem('checkRecordar');
+
+	if(JSON.parse(usuario) != null){
+		usuario = JSON.parse(usuario);
+	}
+
+	if(checkRecordar != "null") {
+		$("#email").val(usuario.email);
+		$("#recordar").prop('checked',true);
+    }
+
 	$('#btn-entrar').on('click', function() {
 		var relleno = true;
 
@@ -25,6 +37,11 @@ $(document).ready(function(){
 });
 
 function comprobarLogin() {
+	if($('#recordar').prop('checked')) {
+		localStorage.setItem("checkRecordar", "checked");
+	} else  {
+		localStorage.setItem("checkRecordar", "null");
+	}
 	$("#btn-entrar").css("display", "none");
 	$("#loading-reg").css("display", "block");
 
@@ -34,6 +51,7 @@ function comprobarLogin() {
       data: ({email: email, password: password}),
       success: function(data) {
           if(data.mensaje != "KO"){
+			  localStorage.setItem('userObject', JSON.stringify(data.users[0]));
 			  $(".texto-error").css("display", "none");
 			  window.location.href = 'https://crousser.com/app/dashboard';
           } else {
