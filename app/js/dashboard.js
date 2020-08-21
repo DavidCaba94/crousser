@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 	$('#btn-cerrar-sesion').on('click', function() {
 		localStorage.setItem('userObject', null);
-		localStorage.setItem('checkRecordar', "null");
+		localStorage.setItem('checkRecordar', null);
 		window.location.href = 'https://crousser.com/app/login';
 	});
 });

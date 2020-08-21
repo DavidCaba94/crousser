@@ -8,7 +8,7 @@ $(document).ready(function(){
 		usuario = JSON.parse(usuario);
 	}
 
-	if(checkRecordar != "null") {
+	if(checkRecordar != null && checkRecordar != "null") {
 		$("#email").val(usuario.email);
 		$("#recordar").prop('checked',true);
     }
@@ -40,7 +40,7 @@ function comprobarLogin() {
 	if($('#recordar').prop('checked')) {
 		localStorage.setItem("checkRecordar", "checked");
 	} else  {
-		localStorage.setItem("checkRecordar", "null");
+		localStorage.setItem("checkRecordar", null);
 	}
 	$("#btn-entrar").css("display", "none");
 	$("#loading-reg").css("display", "block");
