@@ -26,7 +26,12 @@ $(document).ready(function(){
 	});
 
 	$("#foto").change(function(){
-		$("#label-foto").text($("#foto").val());
+		if(this.files[0].size > 1024000){
+			alert("La foto no puede pesar mas de 1MB");
+			this.value = "";
+		} else {
+			$("#label-foto").text($("#foto").val());
+		}
 	});
 
 	$("#btn-registrar").on('click', function() {
