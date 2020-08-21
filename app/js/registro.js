@@ -1,5 +1,5 @@
 //Obligatorios
-var email, nombre, apellidos, password, password2, fecha_nac, pais, ciudad, email_contacto, rol = "webmaster";
+var email, nombre, apellidos, password, password2, fecha_nac, fecha_reg, pais, ciudad, email_contacto, rol = "webmaster";
 //Opcionales
 var foto, website, instagram, linkedin, telefono, descripcion;
 
@@ -194,12 +194,7 @@ async function guardarRegistro() {
 	linkedin = $("#linkedin").val();
 	telefono = $("#telefono").val();
 	descripcion = $("#descripcion").val();
-
-	var fecha_reg = new Date();
-	var dia = fecha_reg.getDate();
-	var mes = fecha_reg.getMonth()+1;
-	var ano = fecha_reg.getFullYear();
-	console.log("Fecha Registro: "+ano+"-"+mes+"-"+dia);
+	fecha_reg = new Date().toJSON().slice(0, 10);
 
 	$.ajax({
           url: '../app/rest/comprobar_email.php',
