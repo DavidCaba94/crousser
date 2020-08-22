@@ -17,7 +17,7 @@
         <script src="libs/bootstrap-4.0.0/js/bootstrap.js"></script>
         <meta name="viewport" content= "width=device-width, user-scalable=no">
 
-        <link href="" rel="stylesheet" type="text/css"/>
+        <link href="css/dashboard.css" rel="stylesheet" type="text/css"/>
         <script src="js/dashboard.js"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -32,7 +32,66 @@
 
     </head>
     <body>
-        DASHBOARD
-        <div id="btn-cerrar-sesion">Cerrar sesión</div>
+        <div class="contenedor-dashboard">
+            <div class="toolbar-dash">
+                <div>
+                    <img id="img-toggle" class="img-burguer" src="img/burguer-menu.png"/>
+                </div>
+                <div>
+                    <h1 class="titulo-toolbar"><img class="img-logo" src="img/logo.png"/>Crousser</h1>
+                </div>
+                <div class="capa-flex">
+                    <div class="marco-imagen">
+                        <img id="img-usuario" class="img-usuario" src="img/user-icon.png" />
+                    </div>
+                    <div id="btn-cerrar-sesion" class="btn-cerrar-sesion">Cerrar sesión</div>
+                </div>
+            </div>
+            <div class="capa-flex-dashboard">
+                <div id="navigation-menu" class="navigation-menu">
+                    <div class="marco-imagen-nav">
+                        <img id="img-usuario-nav" class="img-usuario-nav" src="img/user-icon.png" />
+                    </div>
+                    <p id="nav-nombre" class="nombre-apellidos">Nombre</p>
+                    <p id="nav-apellidos" class="nombre-apellidos">Apellido Apellido</p>
+                    <a href="/app/dashboard">
+                        <div class="pill-nav pill-seleccionada">
+                            <p>Inicio</p>
+                        </div>
+                    </a>
+                    <a href="/app/dashboard">
+                        <div class="pill-nav">
+                            <p>Contactos</p>
+                        </div>
+                    </a>
+                    <a href="/app/dashboard">
+                        <div class="pill-nav">
+                            <p>Mensajes</p>
+                        </div>
+                    </a>
+                    <a href="/app/dashboard">
+                        <div class="pill-nav">
+                            <p>Mis Anuncios</p>
+                        </div>
+                    </a>
+                    <a href="/app/dashboard">
+                        <div class="pill-nav">
+                            <p>Mis Cursos</p>
+                        </div>
+                    </a>
+                    <a href="/app/dashboard">
+                        <div class="pill-nav">
+                            <p>Ser VIP</p>
+                        </div>
+                    </a>
+                    <div id="btn-cerrar-sesion-nav" class="pill-nav pill-cerrar-sesion">
+                        <p>Cerrar sesión</p>
+                    </div>
+                </div>
+                <div class="pizarra">
+
+                </div>
+            </div>
+        </div>
     </body>
 </html>
