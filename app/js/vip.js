@@ -16,6 +16,9 @@ $(document).ready(function(){
 		if(usuario.vip == 1){
 			$(".marco-imagen").css("background-color", "#ffcf00");
 			$(".marco-imagen-nav").css("background-color", "#ffcf00");
+			$(".ya-es-vip").css("display", "block");
+		} else {
+			$(".no-es-vip").css("display", "block");
 		}
 	}
 

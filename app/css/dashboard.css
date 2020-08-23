@@ -103,6 +103,7 @@ input:focus {
 
 .contenedor-dashboard .img-usuario {
 	width: 50px;
+	height: 50px;
 	border-radius: 50px;
 }
 
@@ -119,6 +120,8 @@ input:focus {
 
 .contenedor-dashboard .navigation-menu {
 	display: none;
+	position: absolute;
+	left: 0;
 	width: 300px;
 	height: 100%;
 	background-color: #ffffff;
@@ -136,6 +139,7 @@ input:focus {
 
 .contenedor-dashboard .img-usuario-nav {
 	width: 100px;
+	height: 100px;
 	border-radius: 50px;
 }
 
@@ -197,6 +201,7 @@ input:focus {
 @media (min-width: 768px) {
 	.contenedor-dashboard .navigation-menu {
 		display: block;
+		position: relative;
 	}
 
 	.contenedor-dashboard .marco-imagen {
