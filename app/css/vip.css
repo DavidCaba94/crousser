@@ -58,6 +58,32 @@ input:focus {
     margin-bottom: 0;
 }
 
+.contenedor-dashboard .box-pago {
+	width: 300px;
+	margin: 0 auto;
+	margin-top: 30px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.contenedor-dashboard .precio {
+	width: 100%;
+	font-size: 60px;
+    font-weight: 900;
+	text-align: center;
+	color: #41B883;
+}
+
+.contenedor-dashboard .precio-tachado {
+	width: 100%;
+	font-size: 30px;
+	text-align: center;
+	color: #34495E;
+	margin-top: 20px;
+	margin-bottom: 0;
+}
+
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
 

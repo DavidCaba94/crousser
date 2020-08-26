@@ -59,6 +59,15 @@ class Users
         return $cmd;
     }
 
+    public static function updateVIP($id){
+        $consulta = "UPDATE usuario" .
+            " SET vip=1" .
+            "WHERE id=?";
+        $cmd = Database::getInstance()->getDb()->prepare($consulta);
+        $cmd->execute(array($id));
+        return $cmd;
+    }
+
     public static function insert($email,$nombre,$apellidos,$password,$fecha_nac,$fecha_reg,$pais,$ciudad,$email_contacto,$rol,$foto,$website,$instagram,$linkedin,$telefono,$descripcion) {
         $comando = "INSERT INTO usuarios ( " .
                 "email," .

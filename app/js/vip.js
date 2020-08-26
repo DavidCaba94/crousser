@@ -37,4 +37,57 @@ $(document).ready(function(){
 	$('#img-toggle').on('click', function() {
 		$('#navigation-menu').animate({width: 'toggle'});
 	});
+
+	paypal.Buttons({
+	    createOrder: function(data, actions) {
+	      return actions.order.create({
+	        purchase_units: [{
+	          amount: {
+	            value: '9.99',
+				currency: 'EUR'
+	          }
+	        }]
+	      });
+	    },
+	    onApprove: function(data, actions) {
+	      // This function captures the funds from the transaction.
+	      return actions.order.capture().then(function(details) {
+			  convertirVIP();
+	      });
+	    }
+	  }).render('#paypal-button-container');
+
 });
+
+convertirVIP() {
+	$.ajax({
+      url: '../app/rest/convertir_vip.php',
+      dataType: 'json',
+      data: ({id: usuario.id}),
+      success: function(data) {
+          if(data.mensaje != "KO"){
+			  $.ajax({
+		        url: '../app/rest/obtener_usuario.php',
+		        dataType: 'json',
+		        data: ({email: usuario.email, password: usuario.password}),
+		        success: function(data) {
+		            if(data.mensaje != "KO"){
+		  			  localStorage.setItem('userObject', JSON.stringify(data.users[0]));
+		  			  window.location.href = 'https://crousser.com/app/vip';
+		            } else {
+		  			  alert("Algo salió mal, vuelva al inicio");
+		            }
+		        },
+		        error: function(error) {
+		            console.log(error);
+		        }
+		      });
+          } else {
+			  alert("Algo salió mal, vuelva al inicio");
+          }
+      },
+      error: function(error) {
+          console.log(error);
+      }
+    });
+}
