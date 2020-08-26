@@ -59,7 +59,7 @@ $(document).ready(function(){
 
 });
 
-convertirVIP() {
+function convertirVIP() {
 	$.ajax({
       url: '../app/rest/convertir_vip.php',
       dataType: 'json',
