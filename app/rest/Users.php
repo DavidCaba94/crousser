@@ -60,9 +60,7 @@ class Users
     }
 
     public static function updateVIP($id){
-        $consulta = "UPDATE usuario" .
-            " SET vip=1" .
-            "WHERE id=?";
+        $consulta = "UPDATE usuarios SET vip=1 WHERE id=?";
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
         $cmd->execute(array($id));
         return $cmd;

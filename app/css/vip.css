@@ -69,8 +69,8 @@ input:focus {
 
 .contenedor-dashboard .precio {
 	width: 100%;
-	font-size: 60px;
-    font-weight: 900;
+	font-size: 40px;
+    font-weight: 700;
 	text-align: center;
 	color: #41B883;
 }
@@ -82,6 +82,29 @@ input:focus {
 	color: #34495E;
 	margin-top: 20px;
 	margin-bottom: 0;
+}
+
+.contenedor-dashboard .subtitulo-card {
+	color: #34495E;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.contenedor-dashboard .img-check {
+	width: 30px;
+	margin-right: 10px;
+}
+
+.contenedor-dashboard .texto-vip-pago {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 700;
+    color: #34495E;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 /*Small devices (landscape phones, 576px and up)*/

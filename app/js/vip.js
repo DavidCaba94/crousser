@@ -60,22 +60,25 @@ $(document).ready(function(){
 });
 
 function convertirVIP() {
+	console.log(usuario.id);
 	$.ajax({
+	  type: 'POST',
       url: '../app/rest/convertir_vip.php',
       dataType: 'json',
-      data: ({id: usuario.id}),
+      data: ({id: parseInt(usuario.id, 10)}),
       success: function(data) {
           if(data.mensaje != "KO"){
 			  $.ajax({
-		        url: '../app/rest/obtener_usuario.php',
+				type: 'GET',
+		        url: '../app/rest/recargar_usuario.php',
 		        dataType: 'json',
 		        data: ({email: usuario.email, password: usuario.password}),
 		        success: function(data) {
-		            if(data.mensaje != "KO"){
+		            if(data.estado == "1"){
 		  			  localStorage.setItem('userObject', JSON.stringify(data.users[0]));
 		  			  window.location.href = 'https://crousser.com/app/vip';
 		            } else {
-		  			  alert("Algo salió mal, vuelva al inicio");
+		  			  alert("Algo salió mal, vuelva al inicio o contacte con info@crousser.com");
 		            }
 		        },
 		        error: function(error) {
@@ -83,7 +86,7 @@ function convertirVIP() {
 		        }
 		      });
           } else {
-			  alert("Algo salió mal, vuelva al inicio");
+			  alert("Algo salió mal, vuelva al inicio o contacte con info@crousser.com");
           }
       },
       error: function(error) {

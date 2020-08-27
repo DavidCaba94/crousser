@@ -53,7 +53,7 @@ function comprobarLogin() {
           if(data.mensaje != "KO"){
 			  localStorage.setItem('userObject', JSON.stringify(data.users[0]));
 			  $(".texto-error").css("display", "none");
-			  window.location.href = 'https://crousser.com/app/dashboard';
+	          window.location.href = 'https://crousser.com/app/dashboard';
           } else {
 			  $("#loading-reg").css("display", "none");
 			  $("#btn-entrar").css("display", "block");

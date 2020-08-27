@@ -2,7 +2,6 @@
 require 'Users.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = $_POST['id'];
-    $body = json_decode(file_get_contents("php://input"), true);
     $retorno = Users::updateVIP($id);
     if ($retorno) {
         $json_string = json_encode(array("estado" => 1,"mensaje" => "OK"));
