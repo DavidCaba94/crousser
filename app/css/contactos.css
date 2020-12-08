@@ -1,0 +1,226 @@
+.pizarra .img-destacado {
+	width: 70px !important;
+	height: 70px;
+	border-radius: 50px;
+}
+
+.pizarra .nombre-destacado {
+	font-size: 14px;
+	color: #34495E;
+	text-align: center;
+}
+
+.pizarra .marco-destacado-0 {
+	width: 74px;
+	height: 74px;
+	margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 50px;
+    padding-top: 2px;
+    padding-left: 2px;
+}
+
+.pizarra .marco-destacado-1 {
+	width: 74px;
+	height: 74px;
+	margin: 0 auto;
+    background-color: rgb(255, 207, 0);
+    border-radius: 50px;
+    padding-top: 2px;
+    padding-left: 2px;
+}
+
+.pizarra .titulo-destacados {
+	font-size: 24px;
+	color: #34495E;
+	text-align: center;
+	font-weight: 700;
+	padding: 10px;
+}
+
+.pizarra .item {
+    width: 120px !important;
+}
+
+.pizarra .texto-boton {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+	padding: 20px;
+}
+
+.pizarra .titulo-contactos {
+	font-size: 18px;
+	color: #34495E;
+	text-align: center;
+	font-weight: 500;
+	padding: 10px;
+	margin-bottom: 0;
+}
+
+.pizarra .boton-nuevo-contacto {
+	background-color: #41B883;
+	color: #ffffff;
+	width: 140px;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+	padding-top: 7px;
+    cursor: pointer;
+}
+
+.pizarra .boton-nuevo-contacto:hover {
+	background-color: #287955;
+}
+
+.buscador {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: nowrap;
+	padding: 20px;
+}
+
+.btn-buscar {
+	background-color: #41B883;
+	margin-left: 20px;
+	color: #ffffff;
+	width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+	padding: 7px;
+    cursor: pointer;
+}
+
+.btn-buscar:hover {
+	background-color: #287955;
+}
+
+.resultados {
+	padding: 20px;
+}
+
+.modal-title {
+    color: #34495E;
+}
+
+/*ANIMACION LOADING REGISTRO*/
+
+.lds-ring-destacados {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+	margin-left: calc(50% - 40px);
+  }
+  .lds-ring-destacados div {
+	box-sizing: border-box;
+	display: block;
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	margin: 8px;
+	border: 8px solid #41B883;
+	border-radius: 50%;
+	animation: lds-ring-destacados 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+	border-color: #41B883 transparent transparent transparent;
+  }
+  .lds-ring-destacados div:nth-child(1) {
+	animation-delay: -0.45s;
+  }
+  .lds-ring-destacados div:nth-child(2) {
+	animation-delay: -0.3s;
+  }
+  .lds-ring-destacados div:nth-child(3) {
+	animation-delay: -0.15s;
+  }
+  @keyframes lds-ring-destacados {
+	0% {
+	  transform: rotate(0deg);
+	}
+	100% {
+	  transform: rotate(360deg);
+	}
+  }
+  
+/*FIN ANIMACION LOADING REGISTRO*/
+
+/*ANIMACION INPUTS LOGIN*/
+
+input {
+    margin: 0 auto;
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:200px;
+    border:none;
+    border-bottom:1px solid #34495E;
+    color:#34495E
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    width: 200px;
+}
+.bar:before, .bar:after 	{
+    content:'';
+    height:2px;
+    width:0;
+    bottom:1px;
+    position:absolute;
+    background:#41B883;
+    transition:0.2s ease all;
+    -moz-transition:0.2s ease all;
+    -webkit-transition:0.2s ease all;
+}
+.bar:before {
+    left:50%;
+}
+.bar:after {
+    right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width:50%;
+}
+
+::placeholder {
+  color: #34495E;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: #34495E;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: #34495E;
+}
+
+/*FIN ANIMACION INPUTS LOGIN*/
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+}

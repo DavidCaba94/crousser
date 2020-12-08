@@ -16,6 +16,17 @@ class Users
         }
     }
 
+    public static function getAllUsers(){
+        $consulta = "SELECT * FROM usuarios";
+        try {
+            $comando = Database::getInstance()->getDb()->prepare($consulta);
+            $comando->execute();
+            return $comando->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
     public static function getUser($email){
         $consulta = "SELECT * FROM usuarios WHERE email = '$email'";
         try {

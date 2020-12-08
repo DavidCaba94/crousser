@@ -10,7 +10,8 @@ html {
 body {
 	height: 100%;
   	background-color: #f7f7f7;
-  	font-family: "Open Sans", Sans-serif;
+	font-family: "Open Sans", Sans-serif;
+	overflow-y: hidden;
 }
 
 a {
@@ -95,7 +96,6 @@ input:focus {
 
 .contenedor-dashboard .capa-flex-dashboard {
 	display: flex;
-	align-items: center;
 	justify-content: center;
 	flex-wrap: nowrap;
 	height: 100%;
@@ -134,8 +134,10 @@ input:focus {
 
 .contenedor-dashboard .pizarra {
 	width: 100%;
-	min-height: 100%;
-	padding: 10px;
+    max-height: 100%;
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .contenedor-dashboard .img-usuario-nav {
