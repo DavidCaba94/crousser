@@ -16,6 +16,17 @@ class Users
         }
     }
 
+    public static function getAllById($id){
+        $consulta = "SELECT * FROM usuarios WHERE id = '$id'";
+        try {
+            $comando = Database::getInstance()->getDb()->prepare($consulta);
+            $comando->execute();
+            return $comando->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
     public static function getAllUsers(){
         $consulta = "SELECT * FROM usuarios";
         try {
@@ -29,6 +40,17 @@ class Users
 
     public static function getUser($email){
         $consulta = "SELECT * FROM usuarios WHERE email = '$email'";
+        try {
+            $comando = Database::getInstance()->getDb()->prepare($consulta);
+            $comando->execute();
+            return $comando->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public static function getUserByName($param){
+        $consulta = "SELECT * FROM usuarios WHERE nombre LIKE '%$param%' OR apellidos LIKE '%$param%'";
         try {
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             $comando->execute();
