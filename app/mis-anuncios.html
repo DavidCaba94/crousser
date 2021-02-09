@@ -18,7 +18,8 @@
         <meta name="viewport" content= "width=device-width, user-scalable=no">
 
         <link href="css/dashboard.css" rel="stylesheet" type="text/css"/>
-        <script src="js/dashboard.js"></script>
+        <link href="css/anuncios.css" rel="stylesheet" type="text/css"/>
+        <script src="js/anuncios.js"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163464348-2"></script>
@@ -95,7 +96,34 @@
                     </div>
                 </div>
                 <div class="pizarra">
-                    MIS ANUNCIOS
+                    <div class="contenedor-anuncios">
+                        <div class="box-anuncio">
+                            <div class="imagen-anuncio">
+                                <div class="tag-premium">PREMIUM</div>
+                            </div>
+                            <div class="contenido-anuncio">
+                                <p class="titulo-box-anuncio">Título de prueba</p>
+                                <p class="descripcion-box-anuncio">Descripción de prueba de un anuncio predefinido</p>
+                            </div>
+                        </div>
+                        <div class="box-nuevo-anuncio" data-toggle="modal" data-target="#exampleModalCenterAnuncio">+</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenterAnuncio" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Nuevo anuncio</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
