@@ -121,7 +121,34 @@
                     </button>
                     </div>
                     <div class="modal-body">
-                        
+                        <div class="info-anuncio">Crea tu anuncio de forma gratuita. Si eres un negocio y vendes productos, podrás añadir productos al anuncio después de haberlo creado</div>
+                        <div class="formulario-anuncio">
+                            <div>
+                                <input id="titulo" type="text" placeholder="Título"/>
+                                <span class="bar"></span>
+                            </div>
+                            <div>
+                                <input id="descripcion" type="text" placeholder="Descripción"/>
+                                <span class="bar"></span>
+                            </div>
+                            <div>
+                                <input id="tipo" type="text" placeholder="Webmaster/Negocio" disabled/>
+                                <span class="bar"></span>
+                            </div>
+                            <div>
+                                <div class="custom-file input-foto">
+                                    <input type="file" class="custom-file-input" id="foto" accept=".png,.jpg,.jpeg,.gif,.webp,.bmp">
+                                    <label id="label-foto" class="custom-file-label" for="customFile">Foto (1MB máx.)</label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="pure-material-checkbox">
+                                    <input id="premium" type="checkbox">
+                                    <span>Anuncio Premium (Puedes tener 3 gratis si eres VIP)</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="btn-guardar" class="btn-guardar">Guardar</div>
                     </div>
                 </div>
                 </div>
