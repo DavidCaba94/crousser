@@ -56,7 +56,7 @@ class Anuncios
 
 
     public static function deleteAnuncio($id){
-        $comando = "DELETE FROM anuncio WHERE id = '$id'";
+        $comando = "DELETE FROM anuncios WHERE id = ?";
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
         return $sentencia->execute(array($id));
     }

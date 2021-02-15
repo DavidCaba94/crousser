@@ -97,20 +97,11 @@
                 </div>
                 <div class="pizarra">
                     <div class="contenedor-anuncios">
-                        <div class="box-anuncio">
-                            <div class="imagen-anuncio">
-                                <div class="tag-premium">PREMIUM</div>
-                            </div>
-                            <div class="contenido-anuncio">
-                                <p class="titulo-box-anuncio">Título de prueba</p>
-                                <p class="descripcion-box-anuncio">Descripción de prueba de un anuncio predefinido</p>
-                            </div>
-                        </div>
-                        <div class="box-nuevo-anuncio" data-toggle="modal" data-target="#exampleModalCenterAnuncio">+</div>
+                        <div id="loading-destacados" class="lds-ring-destacados"><div></div><div></div><div></div><div></div></div>
                     </div>
                 </div>
             </div>
-            <!-- Modal -->
+            <!-- Modal Nuevo Anuncio -->
             <div class="modal fade" id="exampleModalCenterAnuncio" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -149,6 +140,53 @@
                             </div>
                         </div>
                         <div id="btn-guardar" class="btn-guardar">Guardar</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Modal Editar Anuncio -->
+            <div class="modal fade" id="exampleModalCenterAnuncioEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="titulo-edicion">Titulo del anuncio</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="formulario-anuncio">
+                            <div>
+                                <input id="edit-titulo" type="text" placeholder="Título"/>
+                                <span class="bar"></span>
+                            </div>
+                            <div>
+                                <input id="edit-descripcion" type="text" placeholder="Descripción"/>
+                                <span class="bar"></span>
+                            </div>
+                            <div>
+                                <input id="edit-tipo" type="text" placeholder="Webmaster/Negocio" disabled/>
+                                <span class="bar"></span>
+                            </div>
+                            <div>
+                                <div class="custom-file input-foto">
+                                    <input type="file" class="custom-file-input" id="edit-foto" accept=".png,.jpg,.jpeg,.gif,.webp,.bmp">
+                                    <label id="label-foto" class="custom-file-label" for="customFile">Foto (1MB máx.)</label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="pure-material-checkbox">
+                                    <input id="edit-premium" type="checkbox">
+                                    <span>Anuncio Premium (Puedes tener 3 gratis si eres VIP)</span>
+                                </label>
+                            </div>
+                        </div>
+                        <h5 class="modal-title">Productos</h5>
+                        <div class="box-productos">
+                            <div class="box-nuevo-producto" data-toggle="modal" data-target="#exampleModalCenterProducto">+</div>
+                        </div>
+                        <div id="btn-guardar-edit" class="btn-guardar">Guardar</div>
+                        <div id="btn-eliminar-anuncio" class="btn-eliminar">Eliminar anuncio</div>
                     </div>
                 </div>
                 </div>

@@ -1,4 +1,5 @@
 var usuario;
+var listaAnuncios = [];
 var id_usuario, titulo, descripcion, tipo, foto, fecha_creacion, premium;
 
 $(document).ready(function(){
@@ -40,6 +41,10 @@ $(document).ready(function(){
 		comprobarCampos();
     });
 
+	$('#btn-guardar-edit').on('click', function() {
+		//guardarEdicion();
+    });
+
 	$("#foto").change(function(){
 		if(this.files[0].size > 1024000){
 			alert("La foto no puede pesar mas de 1MB");
@@ -55,7 +60,39 @@ $(document).ready(function(){
 });
 
 function cargarAnuncios(id) {
-    
+	listaAnuncios = [];
+    $.ajax({
+		url: '../app/rest/obtener_anuncios_user_id.php',
+		dataType: 'json',
+		data: ({id: id}),
+		success: function(data) {
+			if(data.mensaje != "KO"){
+				$(".contenedor-anuncios").html("");
+				for(var i=0; i<data.anuncios.length; i++) {
+					listaAnuncios[i] = data.anuncios[i];
+					$(".contenedor-anuncios").append(''+
+						'<div class="box-anuncio" onclick="cargarDetalleAnuncio('+ i +')">'+
+							'<div id="imagen-anuncio-'+ i +'" class="imagen-anuncio">'+
+								'<div class="tag-premium-'+ data.anuncios[i].premium +'">PREMIUM</div>'+
+							'</div>'+
+							'<div class="contenido-anuncio">'+
+								'<p class="titulo-box-anuncio">'+ data.anuncios[i].titulo +'</p>'+
+								'<p class="descripcion-box-anuncio">'+ data.anuncios[i].descripcion +'</p>'+
+							'</div>'+
+						'</div>');
+				}
+				$(".contenedor-anuncios").append(''+
+					'<div class="box-nuevo-anuncio" data-toggle="modal" data-target="#exampleModalCenterAnuncio">+</div>'+
+				'</div>');
+				setImagenes();
+			} else {
+				console.log("No hay anuncios para este usuario");
+			}
+		},
+		error: function(error) {
+			console.log(error);
+		}
+	  });
 }
 
 function comprobarCampos() {
@@ -110,11 +147,14 @@ async function guardarAnuncio() {
 			premium: premium
 		}),
 		success: function(data) {
-			alert("Anuncio guardado");
 			$("#titulo").val("");
 			$("#descripcion").val("");
 			foto = null;
-			$("#btn-guardar").css("display", "none");
+			cerrarPopup();
+			$(".contenedor-anuncios").append(''+
+				'<div id="loading-destacados" class="lds-ring-destacados"><div></div><div></div><div></div><div></div></div>'+
+			'</div>');
+			cargarAnuncios(usuario.id);
 		},
 		error: function(error) {
 			alert("Algo ha salido mal");
@@ -142,3 +182,60 @@ const toBase64 = file => new Promise((resolve, reject) => {
     reader.onload = () => resolve(reader.result);
     reader.onerror = error => reject(error);
 });
+
+function cerrarPopup() {
+	$("#exampleModalCenterAnuncio").modal('hide');
+	$('body').removeClass('modal-open');
+	$('.modal-backdrop').remove();
+}
+
+function setImagenes() {
+	for(var i=0; i<listaAnuncios.length; i++) {
+		if(listaAnuncios[i].foto != null){
+			$("#imagen-anuncio-"+i).css('background-image', 'url(' + listaAnuncios[i].foto + ')');
+			$("#imagen-anuncio-"+i).css('background-repeat', 'no-repeat');
+			$("#imagen-anuncio-"+i).css('background-position', 'center');
+			$("#imagen-anuncio-"+i).css('background-size', 'cover');
+		}
+	}
+}
+
+function cargarDetalleAnuncio(idAnuncio){
+	$("#exampleModalCenterAnuncioEdit").modal("show");
+	$("#titulo-edicion").text(listaAnuncios[idAnuncio].titulo);
+	$("#edit-titulo").val(listaAnuncios[idAnuncio].titulo);
+	$("#edit-descripcion").val(listaAnuncios[idAnuncio].descripcion);
+	$("#edit-tipo").val(listaAnuncios[idAnuncio].tipo);
+	if(listaAnuncios[idAnuncio].premium == 1){
+		$('#edit-premium').prop('checked', true);
+	} else {
+		$('#edit-premium').prop('checked', false);
+	}
+	$("#btn-eliminar-anuncio").attr("onclick", "eliminarAnuncio("+ listaAnuncios[idAnuncio].id +")");
+}
+
+function eliminarAnuncio(id) {
+	$.ajax({
+		type: 'POST',
+		url: '../app/rest/eliminar_anuncio.php',
+		dataType: 'json',
+		data: ({id: id}),
+		success: function(data) {
+			if(data.mensaje != "KO"){
+				cerrarPopupEdicion();
+				cargarAnuncios(usuario.id);
+			} else {
+				console.log("No se ha podido eliminar el anuncio");
+			}
+		},
+		error: function(error) {
+			console.log(error);
+		}
+	  });
+}
+
+function cerrarPopupEdicion() {
+	$("#exampleModalCenterAnuncioEdit").modal('hide');
+	$('body').removeClass('modal-open');
+	$('.modal-backdrop').remove();
+}
