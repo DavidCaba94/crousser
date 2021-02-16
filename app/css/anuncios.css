@@ -176,6 +176,56 @@
     border: 1px solid #41B883;
 }
 
+.box-confirmar-eliminar {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.btn-confirmar {
+    color: #ffffff;
+    background-color: #ff8383;
+	width: 120px;
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    text-align: center;
+	padding: 7px;
+    cursor: pointer;
+}
+
+.btn-confirmar:hover {
+    background-color: #ca4949;
+}
+
+.btn-cancelar {
+    color: #ffffff;
+    background-color: #acacac;
+	width: 120px;
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+	padding: 7px;
+    cursor: pointer;
+}
+
+.btn-cancelar:hover {
+    background-color: #8d8d8d;
+}
+
+.texto-confirmar-eliminar {
+    display: none;
+    text-align: center;
+    font-size: 14px;
+    color: #34495E;
+    padding: 10px;
+}
+
 /*ANIMACION INPUTS FORM*/
 
 input {

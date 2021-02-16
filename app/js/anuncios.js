@@ -41,10 +41,6 @@ $(document).ready(function(){
 		comprobarCampos();
     });
 
-	$('#btn-guardar-edit').on('click', function() {
-		//guardarEdicion();
-    });
-
 	$("#foto").change(function(){
 		if(this.files[0].size > 1024000){
 			alert("La foto no puede pesar mas de 1MB");
@@ -52,6 +48,21 @@ $(document).ready(function(){
 		} else {
 			$("#label-foto").text($("#foto").val());
 		}
+	});
+
+	$("#edit-foto").change(function(){
+		if(this.files[0].size > 1024000){
+			alert("La foto no puede pesar mas de 1MB");
+			this.value = "";
+		} else {
+			$("#label-foto-edit").text($("#edit-foto").val());
+		}
+	});
+
+	$('#exampleModalCenterAnuncioEdit').on('hidden.bs.modal', function (e) {
+		$("#btn-eliminar-anuncio").css("display","block");
+		$(".texto-confirmar-eliminar").css("display","none");
+		$(".box-confirmar-eliminar").css("display","none");
 	});
 
     cargarAnuncios(usuario.id);
@@ -86,7 +97,10 @@ function cargarAnuncios(id) {
 				'</div>');
 				setImagenes();
 			} else {
-				console.log("No hay anuncios para este usuario");
+				$(".contenedor-anuncios").html("");
+				$(".contenedor-anuncios").append(''+
+					'<div class="box-nuevo-anuncio" data-toggle="modal" data-target="#exampleModalCenterAnuncio">+</div>'+
+				'</div>');
 			}
 		},
 		error: function(error) {
@@ -211,7 +225,24 @@ function cargarDetalleAnuncio(idAnuncio){
 	} else {
 		$('#edit-premium').prop('checked', false);
 	}
-	$("#btn-eliminar-anuncio").attr("onclick", "eliminarAnuncio("+ listaAnuncios[idAnuncio].id +")");
+	$("#btn-guardar-edit").attr("onclick", "guardarEdicion("+ idAnuncio +")");
+	$("#btn-eliminar-anuncio").attr("onclick", "confirmarEliminacion("+ listaAnuncios[idAnuncio].id +")");
+}
+
+function confirmarEliminacion(id) {
+	$("#btn-eliminar-anuncio").css("display","none");
+	$(".texto-confirmar-eliminar").css("display","block");
+	$(".box-confirmar-eliminar").css("display","flex");
+
+	$('#btn-confirmar-eliminar').on('click', function() {
+		eliminarAnuncio(id);
+    });
+	
+	$('#btn-confirmar-cancelar').on('click', function() {
+		$("#btn-eliminar-anuncio").css("display","block");
+		$(".texto-confirmar-eliminar").css("display","none");
+		$(".box-confirmar-eliminar").css("display","none");
+    });
 }
 
 function eliminarAnuncio(id) {
@@ -222,10 +253,16 @@ function eliminarAnuncio(id) {
 		data: ({id: id}),
 		success: function(data) {
 			if(data.mensaje != "KO"){
+				$("#btn-eliminar-anuncio").css("display","block");
+				$(".texto-confirmar-eliminar").css("display","none");
+				$(".box-confirmar-eliminar").css("display","none");
 				cerrarPopupEdicion();
 				cargarAnuncios(usuario.id);
 			} else {
 				console.log("No se ha podido eliminar el anuncio");
+				$("#btn-eliminar-anuncio").css("display","block");
+				$(".texto-confirmar-eliminar").css("display","none");
+				$(".box-confirmar-eliminar").css("display","none");
 			}
 		},
 		error: function(error) {
@@ -238,4 +275,46 @@ function cerrarPopupEdicion() {
 	$("#exampleModalCenterAnuncioEdit").modal('hide');
 	$('body').removeClass('modal-open');
 	$('.modal-backdrop').remove();
+}
+
+async function guardarEdicion(idAnuncio) {
+	const file = document.querySelector('#edit-foto').files[0];
+	if(file != null) {
+		newFoto = await toBase64(file);
+	} else {
+		newFoto = listaAnuncios[idAnuncio].foto;
+	}
+
+	titulo = $("#edit-titulo").val();
+	descripcion = $("#edit-descripcion").val();
+
+	if($('#edit-premium').prop('checked')) {
+		premium = 1;
+	} else  {
+		premium = 0;
+	}
+
+	$.ajax({
+		type: 'POST',
+		url: '../app/rest/actualizar_anuncio.php',
+		dataType: 'json',
+		data: ({
+			id: listaAnuncios[idAnuncio].id,
+			titulo: titulo,
+			descripcion: descripcion,
+			foto: newFoto,
+			premium: premium
+		}),
+		success: function(data) {
+			cerrarPopupEdicion();
+			$(".contenedor-anuncios").append(''+
+				'<div id="loading-destacados" class="lds-ring-destacados"><div></div><div></div><div></div><div></div></div>'+
+			'</div>');
+			cargarAnuncios(usuario.id);
+		},
+		error: function(error) {
+			alert("Algo ha salido mal");
+			console.log(error);
+		}
+  	});
 }

@@ -54,6 +54,14 @@ class Anuncios
         );
     }
 
+    public static function actualizarAnuncio($id, $titulo, $descripcion, $foto, $premium){
+        $consulta = "UPDATE anuncios" .
+            " SET titulo=?, descripcion=?, foto=?, premium=? " .
+            "WHERE id=?";
+        $cmd = Database::getInstance()->getDb()->prepare($consulta);
+        $cmd->execute(array($titulo, $descripcion, $foto, $premium, $id));
+        return $cmd;
+    }
 
     public static function deleteAnuncio($id){
         $comando = "DELETE FROM anuncios WHERE id = ?";
