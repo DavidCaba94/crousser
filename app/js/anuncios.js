@@ -220,6 +220,8 @@ function cargarDetalleAnuncio(idAnuncio){
 	$("#edit-titulo").val(listaAnuncios[idAnuncio].titulo);
 	$("#edit-descripcion").val(listaAnuncios[idAnuncio].descripcion);
 	$("#edit-tipo").val(listaAnuncios[idAnuncio].tipo);
+	$("#edit-foto").val(null);
+	$("#label-foto-edit").text("Foto (1MB máx.)");
 	if(listaAnuncios[idAnuncio].premium == 1){
 		$('#edit-premium').prop('checked', true);
 	} else {
@@ -306,6 +308,7 @@ async function guardarEdicion(idAnuncio) {
 			premium: premium
 		}),
 		success: function(data) {
+			newFoto = null;
 			cerrarPopupEdicion();
 			$(".contenedor-anuncios").append(''+
 				'<div id="loading-destacados" class="lds-ring-destacados"><div></div><div></div><div></div><div></div></div>'+
