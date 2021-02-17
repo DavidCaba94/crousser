@@ -59,6 +59,15 @@ $(document).ready(function(){
 		}
 	});
 
+	$("#foto-producto").change(function(){
+		if(this.files[0].size > 1024000){
+			alert("La foto no puede pesar mas de 1MB");
+			this.value = "";
+		} else {
+			$("#label-foto-producto").text($("#foto-producto").val());
+		}
+	});
+
 	$('#exampleModalCenterAnuncioEdit').on('hidden.bs.modal', function (e) {
 		$("#btn-eliminar-anuncio").css("display","block");
 		$(".texto-confirmar-eliminar").css("display","none");
@@ -227,6 +236,7 @@ function cargarDetalleAnuncio(idAnuncio){
 	} else {
 		$('#edit-premium').prop('checked', false);
 	}
+	cargarProductos(listaAnuncios[idAnuncio].id);
 	$("#btn-guardar-edit").attr("onclick", "guardarEdicion("+ idAnuncio +")");
 	$("#btn-eliminar-anuncio").attr("onclick", "confirmarEliminacion("+ listaAnuncios[idAnuncio].id +")");
 }
@@ -260,8 +270,9 @@ function eliminarAnuncio(id) {
 				$(".box-confirmar-eliminar").css("display","none");
 				cerrarPopupEdicion();
 				cargarAnuncios(usuario.id);
+				eliminarProductosRelacionados(id);
 			} else {
-				console.log("No se ha podido eliminar el anuncio");
+				alert("No se ha podido eliminar el anuncio");
 				$("#btn-eliminar-anuncio").css("display","block");
 				$(".texto-confirmar-eliminar").css("display","none");
 				$(".box-confirmar-eliminar").css("display","none");
@@ -270,7 +281,26 @@ function eliminarAnuncio(id) {
 		error: function(error) {
 			console.log(error);
 		}
-	  });
+	});
+}
+
+function eliminarProductosRelacionados(id_anuncio) {
+	$.ajax({
+		type: 'POST',
+		url: '../app/rest/eliminar_productos_anuncio.php',
+		dataType: 'json',
+		data: ({id_anuncio: id_anuncio}),
+		success: function(data) {
+			if(data.mensaje != "KO"){
+				
+			} else {
+				
+			}
+		},
+		error: function(error) {
+			console.log(error);
+		}
+	});
 }
 
 function cerrarPopupEdicion() {
@@ -320,4 +350,104 @@ async function guardarEdicion(idAnuncio) {
 			console.log(error);
 		}
   	});
+}
+
+function cargarProductos(idAnuncio) {
+	$.ajax({
+		url: '../app/rest/obtener_productos_anuncio.php',
+		dataType: 'json',
+		data: ({idAnuncio: idAnuncio}),
+		success: function(data) {
+			if(data.mensaje != "KO"){
+				console.log(data);
+				$(".box-productos").html("");
+				for(var i=0; i<data.productos.length; i++) {
+					$(".box-productos").append(''+
+						'<div class="box-nuevo-producto">'+ data.productos[i].nombre +'</div>'+
+					'</div>');
+				}
+				$(".box-productos").append(''+
+					'<div class="box-nuevo-producto" onclick="abrirModalNuevoProducto('+ idAnuncio +')">+</div>'+
+				'</div>');
+				//setImagenesProductos();
+			} else {
+				console.log(data);
+				$(".box-productos").html("");
+				$(".box-productos").append(''+
+					'<div class="box-nuevo-producto" onclick="abrirModalNuevoProducto('+ idAnuncio +')">+</div>'+
+				'</div>');
+			}
+		},
+		error: function(error) {
+			console.log(error);
+		}
+	  });
+}
+
+function abrirModalNuevoProducto(idAnuncio) {
+	cerrarPopupEdicion();
+	$("#exampleModalCenterProducto").modal('show');
+	$("#btn-guardar-producto").attr("onclick", "comprobarCamposProducto("+ idAnuncio +")");
+}
+
+function comprobarCamposProducto(idAnuncio) {
+	var todoRelleno = true;
+
+	if(estaVacío($("#nombre-producto"))){
+		todoRelleno = false;
+	}
+
+	if(estaVacío($("#descripcion-producto"))){
+		todoRelleno = false;
+	}
+
+	if(estaVacío($("#precio-producto"))){
+		todoRelleno = false;
+	}
+
+	if(todoRelleno) {
+		guardarNuevoProducto(idAnuncio);
+	}
+}
+
+async function guardarNuevoProducto(id_anuncio) {
+	const file = document.querySelector('#foto-producto').files[0];
+	if(file != null) {
+		foto = await toBase64(file);
+	}
+
+	nombre = $("#nombre-producto").val();
+	descripcion = $("#descripcion-producto").val();
+	precio = $("#precio-producto").val();
+
+	$.ajax({
+		type: 'POST',
+		url: '../app/rest/insertar_producto.php',
+		dataType: 'json',
+		data: ({
+			id_anuncio: id_anuncio,
+			nombre: nombre,
+			descripcion: descripcion,
+			precio: precio,
+			foto: foto
+		}),
+		success: function(data) {
+			$("#nombre-producto").val("");
+			$("#descripcion-producto").val("");
+			$("#precio-producto").val("");
+			$("#label-foto-producto").text("Foto (1MB máx.)");
+			foto = null;
+			cerrarPopupProducto();
+		},
+		error: function(error) {
+			alert("Algo ha salido mal");
+			console.log(error);
+		}
+  	});
+}
+
+function cerrarPopupProducto() {
+	$("#exampleModalCenterProducto").modal('hide');
+	$('body').removeClass('modal-open');
+	$('.modal-backdrop').remove();
 }
